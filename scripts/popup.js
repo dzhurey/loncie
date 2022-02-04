@@ -1,24 +1,43 @@
-// Initialize button with user's preferred color
-let changeColor = document.getElementById("changeColor");
+let table = document.getElementById("yourLoncies");
 
-chrome.storage.sync.get("color", ({ color }) => {
-  changeColor.style.backgroundColor = color;
-});
+function buildTableColumn(text) {
+  let col = document.createElement("div");
+  col.classList.add("record-item");
+  col.innerText = text;
+  return col;
+}
 
-// When the button is clicked, inject setPageBackgroundColor into current page
-changeColor.addEventListener("click", async () => {
-  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+function buildTableRow(item) {
+  const row = document.createElement("div");
+  row.classList.add("record");
 
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    function: setPageBackgroundColor,
+  row.appendChild(buildTableColumn(item.name));
+
+  const btnLaunch = document.createElement("button");
+  btnLaunch.classList.add("btn");
+  btnLaunch.innerText = "Launch";
+  row.appendChild(btnLaunch);
+
+  btnLaunch.addEventListener("click", () => {
+    console.log("item")
+    console.log(item)
+    for (const url in item.list) {
+      chrome.tabs.create({ url: url, active: false });
+    }
   });
-});
 
-// The body of this function will be executed as a content script inside the
-// current page
-function setPageBackgroundColor() {
-  chrome.storage.sync.get("color", ({ color }) => {
-    document.body.style.backgroundColor = color;
+  return row;
+}
+
+function displayLoncies() {
+  chrome.storage.sync.get("items", (data) => {
+    const { items } = data;
+
+    for (let item of items) {
+      const rec = buildTableRow(item)
+      table.appendChild(rec)
+    }
   });
 }
+
+displayLoncies();

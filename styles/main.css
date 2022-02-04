@@ -19,3 +19,10 @@
 .hide {
   display: none;
 }
+
+.record {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 200px;
+}
