@@ -4,19 +4,16 @@ let formAdd = document.getElementById("addForm");
 
 function buildTableColumn(text) {
   let col = document.createElement("div");
-  col.classList.add("record-item");
+  col.classList.add("table-col");
   col.innerText = text;
   return col;
 }
 
 function buildTableRow(item) {
   const row = document.createElement("div");
-  row.classList.add("record");
-
-  Object.keys(item).forEach(key => {
-    const col = buildTableColumn(item[key]);
-    row.appendChild(col);
-  })
+  row.classList.add("table");
+  const name = buildTableColumn(item["name"]);
+  row.appendChild(name);
 
   return row;
 }
@@ -25,10 +22,10 @@ function displayLoncies() {
   chrome.storage.sync.get("items", (data) => {
     const { items } = data;
 
-    for (let item of items) {
+    items.forEach(item => {
       const rec = buildTableRow(item)
       table.appendChild(rec)
-    }
+    });
   });
 }
 

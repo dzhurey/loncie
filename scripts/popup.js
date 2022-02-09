@@ -15,15 +15,13 @@ function buildTableRow(item) {
 
   const btnLaunch = document.createElement("button");
   btnLaunch.classList.add("btn");
-  btnLaunch.innerText = "Launch";
+  btnLaunch.classList.add("btn-launch");
   row.appendChild(btnLaunch);
 
-  btnLaunch.addEventListener("click", () => {
-    console.log("item")
-    console.log(item)
-    for (const url in item.list) {
+  row.addEventListener("click", () => {
+    item.list.forEach(url => {
       chrome.tabs.create({ url: url, active: false });
-    }
+    });
   });
 
   return row;
