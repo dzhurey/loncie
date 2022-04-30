@@ -4,18 +4,37 @@
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body>
-    <div>
-      <p>Your Loncies</p>
-    </div>
-    <button class="btn" id="createLoncie">Add</button>
-    <div id="yourLoncies"></div>
+    <div class="container">
+      <div class="container-flex">
+        <h2>Your Loncies</h2>
+        <button class="btn" id="createLoncie">Add</button>
+      </div>
+    <!-- <div id="yourLoncies"></div> -->
     <div class="form hide" id="addForm">
       <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" name="name">
+        <label for="name">Loncie Name</label>
+        <input type="image" name="submit" id="myBtn" src="/images/pencil.png">
+        <input type="image" name="submit" src="/images/trash.png">
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create New Loncie</h2>
+            <label>Name</label><br>
+            <input class="input-border" type="text"><br>
+            <label>Urls</label><br>
+            <input class="input-border" type="text">
+          </div>
+
+        </div>
+
       </div>
       <div id="dynamicForm"></div>
     </div>
+  </div>
   </body>
   <script src="scripts/options.js"></script>
 </html>
