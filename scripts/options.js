@@ -4,6 +4,7 @@ let formAdd = document.getElementById("addForm");
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
+var hideForm = document.getElementById("hideForm");
 
 btn.onclick = function() {
   modal.style.display = "block";
@@ -17,6 +18,10 @@ window.onclick = function(event) {
   if (event.target == modal){
     modal.style.display = "none"
   }
+}
+
+hideForm.onclick = function() {
+  formAdd.classList.add("hide");
 }
 
 function buildTableColumn(text) {
