@@ -811,12 +811,12 @@ input[type="range"]::-ms-fill-lower {
   display: none;
 }
 
-.h-5 {
-  height: 1.25rem;
-}
-
 .h-modal {
   height: calc(100% - 2rem);
+}
+
+.h-5 {
+  height: 1.25rem;
 }
 
 .h-full {
@@ -827,12 +827,12 @@ input[type="range"]::-ms-fill-lower {
   height: 3.5rem;
 }
 
-.w-5 {
-  width: 1.25rem;
-}
-
 .w-full {
   width: 100%;
+}
+
+.w-5 {
+  width: 1.25rem;
 }
 
 .w-14 {
