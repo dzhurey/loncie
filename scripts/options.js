@@ -6,23 +6,23 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 var hideForm = document.getElementById("hideForm");
 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
+// btn.onclick = function() {
+//   modal.style.display = "block";
+// }
 
-span.onclick = function() {
-  modal.style.display = "none";
-}
+// span.onclick = function() {
+//   modal.style.display = "none";
+// }
 
-window.onclick = function(event) {
-  if (event.target == modal){
-    modal.style.display = "none"
-  }
-}
+// window.onclick = function(event) {
+//   if (event.target == modal){
+//     modal.style.display = "none"
+//   }
+// }
 
-hideForm.onclick = function() {
-  formAdd.classList.add("hide");
-}
+// hideForm.onclick = function() {
+//   formAdd.classList.add("hide");
+// }
 
 function buildTableColumn(text) {
   let col = document.createElement("div");
@@ -43,9 +43,9 @@ function buildTableRow(item) {
 function displayLoncies() {
   chrome.storage.sync.get("items", (data) => {
     const { items } = data;
-
     items.forEach(item => {
       const rec = buildTableRow(item)
+      if(table != null)
       table.appendChild(rec)
     });
   });
